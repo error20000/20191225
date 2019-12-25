@@ -1,0 +1,16 @@
+
+/target/
+/logs/
+/upload/
+/attacks/
+/dist/
+/static/
+/docs/
+
+/.settings/
+.classpath
+.project
+
+*.apk
+*.rar
+*.zip
