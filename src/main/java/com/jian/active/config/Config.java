@@ -43,4 +43,6 @@ public class Config {
 	public String pwdReg = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$"; //密码正则表达式
 	public String pwdRegStr = "（密码至少包含 数字和英文，长度6-20）"; //密码格式提示
 	
+	public String wx_code_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
+	
 }
