@@ -1,7 +1,7 @@
 var baseUrl = parent.window.baseUrl || '../';
 
-var queryUrl = baseUrl + "api/data/findPage";
-var excelUrl = baseUrl + "api/data/excel";
+var queryUrl = baseUrl + "api/active/findPage";
+var excelUrl = baseUrl + "api/active/excel";
 
 var ajaxReq = parent.window.ajaxReq || "";
 
@@ -23,6 +23,19 @@ var myvue = new Vue({
 				listLoading: false,
 				sels: [],
 				preloading: false,
+				
+				typeOptions:[
+					{label: "事件1", value: 1},
+					{label: "事件2", value: 2},
+					{label: "事件3", value: 3},
+					{label: "事件4", value: 4},
+					{label: "事件5", value: 5},
+					{label: "事件6", value: 6},
+					{label: "事件7", value: 7},
+					{label: "事件8", value: 8},
+					{label: "事件9", value: 9},
+					{label: "事件10", value: 10},
+				],
 				
 				user: ''
 			}
@@ -78,15 +91,13 @@ var myvue = new Vue({
 				this.getList();
 			},
 			getExcel: function(){
-				this.query();
 				var params = "";
 				for ( var key in this.filters) {
 					if(this.filters[key]){
 						params += "&"+key+"="+this.filters[key];
 					}
 				}
-				params += "&userId="+this.user.pid;
-				parent.window.open(excelUrl+(params ? "?"+params.substring(1) : ""));
+				parent.window.open(excelUrl + "?token=" + parent.window.loginToken + params);
 			},
 			
 			selsChange: function (sels) {

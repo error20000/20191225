@@ -32,6 +32,12 @@ public class Config {
 	@Value("${sso_module}")
 	public String sso_module;
 
+	//微信
+	@Value("${wx_appId}")
+	public String wx_appId;
+	@Value("${wx_appsecret}")
+	public String wx_appsecret;
+
 	
 	public int maxLoginCount = 5; //登录密码错误次数限制
 	public int maxLoginTime = 1 * 60 * 1000; //登录密码错误时长限制  单位毫秒
@@ -44,5 +50,8 @@ public class Config {
 	public String pwdRegStr = "（密码至少包含 数字和英文，长度6-20）"; //密码格式提示
 	
 	public String wx_code_url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=SCOPE&state=STATE#wechat_redirect";
+	public String wx_token_url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
+	public String wx_check_token_url = "https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&openid=OPENID";
+	
 	
 }

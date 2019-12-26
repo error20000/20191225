@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.jian.active.entity.User;
+import com.jian.active.util.TokenUtils;
 import com.jian.tools.core.HttpTools;
 import com.jian.tools.core.JsonTools;
 import com.jian.tools.core.ResultKey;
@@ -111,7 +113,7 @@ public class VerifyConfig {
 			return verifyLoginSSO(req);
 		}else{
 			//本地session验证.
-			return verifyLoginNormal(req);
+			return verifyLoginToken(req);
 		}
 	}
 	
@@ -119,6 +121,16 @@ public class VerifyConfig {
 		HttpSession session = req.getSession();
 		Object temp = session.getAttribute(config.login_session_key);
 		if(temp == null){
+			return ResultTools.custom(Tips.ERROR111).put(ResultKey.DATA, "verifyLoginNormal session is null!").build();
+		}
+		return null;
+	}
+	
+	private static Map<String, Object> verifyLoginToken(HttpServletRequest req){
+		
+		String tokenStr = TokenUtils.getLoginToken(req);
+		User user = TokenUtils.getLoginUser(tokenStr);
+		if(user == null){
 			return ResultTools.custom(Tips.ERROR111).put(ResultKey.DATA, "verifyLoginNormal session is null!").build();
 		}
 		return null;
