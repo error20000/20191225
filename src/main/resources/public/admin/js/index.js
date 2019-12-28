@@ -23,8 +23,8 @@ new Vue({
             ],
             newPwd: [{ required: true, message: "请输入新密码.", trigger: "blur" },
 				{ validator: (rule, value, callback) => {
-			          if (this.pwdReg && !this.pwdReg.test(this.pwdForm.newPwd) ) {
-			            callback(new Error('密码格式不正确!'+this.pwdRegStr));
+			          if (pwdReg && !pwdReg.test(this.pwdForm.newPwd) ) {
+			            callback(new Error('密码格式不正确!'+pwdRegStr));
 			          } else {
 			            callback();
 			          }
