@@ -267,6 +267,26 @@ public class ActiveController extends BaseController<Active> {
 		return ResultTools.custom(Tips.ERROR1).put(ResultKey.DATA, res).toJSONString();
 	}
 	
+
+	@RequestMapping("/list")
+    @ResponseBody
+	@API(name="参与活动记录", info="")
+	public String list(HttpServletRequest req) {
+
+		Map<String, Object> vMap = null;
+		
+		//参数
+		String openid = Tools.getReqParamSafe(req, "openid");
+		vMap = Tools.verifyParam("openid", openid, 0, 0);
+		if(vMap != null){
+			return JsonTools.toJsonString(vMap);
+		}
+		
+		List<Active> res = service.findList(MapTools.custom().put("other", openid).build());
+		
+		return ResultTools.custom(Tips.ERROR1).put(ResultKey.DATA, res).toJSONString();
+	}
+	
 	@RequestMapping("/excel")
     @ResponseBody
 	public String excel(HttpServletRequest req, HttpServletResponse resp) {

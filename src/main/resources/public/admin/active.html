@@ -70,15 +70,15 @@
 		    <el-tab-pane label="结果" name="table" disabled>
 				<!-- list -->
 				<el-table :data="list" highlight-current-row border v-loading="listLoading" @selection-change="selsChange" style="width: 100%;" class="mytable" >
-					<el-table-column label="Pid" prop="pid" width="120">
+					<el-table-column label="Pid" prop="pid" width="120" >
 					</el-table-column>
-					<el-table-column label="事件序号" prop="type" >
+					<el-table-column label="事件序号" prop="type" width="120" >
 					</el-table-column>
 					<el-table-column label="日期" prop="date" >
 					</el-table-column>
 					<el-table-column label="IP" prop="ip" >
 					</el-table-column>
-					<el-table-column label="openid" prop="other" >
+					<el-table-column label="openid" prop="other" width="250" >
 					</el-table-column>
 					<el-table-column label="其他信息" prop="info" >
 					</el-table-column>
